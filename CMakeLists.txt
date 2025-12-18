@@ -31,27 +31,27 @@ add_library(HI_COMMON SHARED
 
 # hardware to build
 add_subdirectory(hardware/ati_netft)
-add_subdirectory(hardware/coinft)
+# add_subdirectory(hardware/coinft)
 # add_subdirectory(hardware/realsense)
-add_subdirectory(hardware/gopro)
-add_subdirectory(hardware/oak)
-add_subdirectory(hardware/robotiq_ft_modbus)
-add_subdirectory(hardware/ur_rtde)
-add_subdirectory(hardware/wsg_gripper)
+# add_subdirectory(hardware/gopro)
+# add_subdirectory(hardware/oak)
+# add_subdirectory(hardware/robotiq_ft_modbus)
+# add_subdirectory(hardware/ur_rtde)
+# add_subdirectory(hardware/wsg_gripper)
 
 # workcell to build
 # include every "include" directory under /hardware/*
 file(GLOB HARDWARE_INCLUDE_DIRS "hardware/*/include")
 include_directories(${HARDWARE_INCLUDE_DIRS})
-add_subdirectory(workcell/table_top_manip)
-add_subdirectory(workcell/test)
+# add_subdirectory(workcell/table_top_manip)
+# add_subdirectory(workcell/test)
 
 # Application to build
 file(GLOB WORKCELL_INCLUDE_DIRS "workcell/*/include")
 include_directories(${WORKCELL_INCLUDE_DIRS})
-add_subdirectory(applications/force_control_demo)
-add_subdirectory(applications/ft_calibration)
-add_subdirectory(applications/manipulation_data_collection)
+# add_subdirectory(applications/force_control_demo)
+# add_subdirectory(applications/ft_calibration)
+# add_subdirectory(applications/manipulation_data_collection)
 
 
 # install common
@@ -73,13 +73,14 @@ target_include_directories(test_hardware_interfaces PRIVATE
   # hardware/realsense/include/
   hardware/ur_rtde/include/
   hardware/robotiq_ft_modbus/include/
+  ${RUT_INCLUDE_DIR}
 )
 target_link_libraries(test_hardware_interfaces
   HI_COMMON
   ${Boost_LIBRARIES}
   ${RUT}
-  WSG_GRIPPER
+  # WSG_GRIPPER
   ${YAMLLib} 
-  COIN_FT
+  # COIN_FT
   # spdlog::spdlog
 )
